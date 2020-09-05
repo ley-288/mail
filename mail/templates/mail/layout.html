@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Mail{% endblock %}</title>
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'mail/styles.css' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        {% block script %}
+        {% endblock %}
+
+        <style>
+            body {
+                padding-left: 40px;
+                float: center;
+                background-color: white;
+            }
+
+            /*inside search bar*/
+            .searchbar{
+                height:35px;
+                padding-top: 7px;
+                border:none;
+                width:500px;
+                font-size:18px;
+                outline: none;
+                margin-left: 400px;
+                padding-right: 10px;
+                word-wrap: break-word; 
+                background: rgb(238, 238, 238);
+                border-radius: 10px;
+                flex: 1;
+                display: flex;
+                padding: 0px 8px 0px 16px;
+                padding-left: 20px;
+                box-shadow: 1px 1px 8px 1px transparent;
+                outline:none;
+            }
+            
+        
+        
+        </style>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="https://www.google.com/intl/it/gmail/about/">Mail</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="">Inbox <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                </li>
+              
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                <input class="searchbar" type="search" placeholder="Search mail" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </div>
+          </nav>
+
+            <img src="{% static 'mail/gmail.png' %}" style="float: right; height: 75px; width: 75px;margin-right:100px;">
+    </head>
+    <body>
+        <div class="container">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
